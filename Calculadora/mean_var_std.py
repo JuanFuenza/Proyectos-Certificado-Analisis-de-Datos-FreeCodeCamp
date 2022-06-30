@@ -16,9 +16,15 @@ def calculate(list: list):
     variance = [np.var(array, axis=0).tolist(), np.var(array, axis=1).tolist(), np.var(array)]
     # Calculo desviación estándar.
     standard_deviation = [np.std(array, axis=0).tolist(), np.std(array, axis=1).tolist(), np.std(array)]
+    # Calculo maximos
+    calc_max = [np.max(array, axis=0).tolist(), np.max(array, axis=1).tolist(), np.max(array)]
+    # Calculo minimos
+    calc_min = [np.min(array, axis=0).tolist(), np.min(array, axis=1).tolist(), np.min(array)]
     print(array)
     print(mean)
     print(variance)
     print(standard_deviation)
+    print(calc_max)
+    print(calc_min)
     
 calculate([0,1,2,3,4,5,6,7,8])
