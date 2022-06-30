@@ -20,11 +20,9 @@ def calculate(list: list):
     calc_max = [np.max(array, axis=0).tolist(), np.max(array, axis=1).tolist(), np.max(array)]
     # Calculo minimos
     calc_min = [np.min(array, axis=0).tolist(), np.min(array, axis=1).tolist(), np.min(array)]
-    print(array)
-    print(mean)
-    print(variance)
-    print(standard_deviation)
-    print(calc_max)
-    print(calc_min)
-    
+    # Suma de filas, columnas y elementos.
+    calc_sum = [np.sum(array, axis=0).tolist(), np.sum(array, axis=1).tolist(), np.sum(array)]
+
+    calculations = {}
+
 calculate([0,1,2,3,4,5,6,7,8])
