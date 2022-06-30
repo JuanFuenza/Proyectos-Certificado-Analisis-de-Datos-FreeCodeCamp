@@ -7,7 +7,8 @@ def calculate(list: list):
     devuelve un diccionario con la media, varianza,
     desviación estándar, max, min, suma a lo largo de
     ambos ejes y para la matriz aplanada."""
-
+    if len(list) != 9:
+        raise ValueError("La lista debe contener nueve números")
     # Conversion de lista a array y a una matriz de 3 x 3.
     array = np.array(list).reshape((3,3))
     # Calculo de la media por fila, por columna y elementos.
@@ -23,6 +24,8 @@ def calculate(list: list):
     # Suma de filas, columnas y elementos.
     calc_sum = [np.sum(array, axis=0).tolist(), np.sum(array, axis=1).tolist(), np.sum(array)]
 
-    calculations = {}
+    calculations = {'mean': mean, 'variance': variance, 'standard deviation': standard_deviation, 'max': calc_max, 'min': calc_min, 'sum': calc_sum}
 
-calculate([0,1,2,3,4,5,6,7,8])
+    return calculations
+
+print(calculate([0,1,2,3,4,5,6,7,8,5]))
