@@ -29,11 +29,15 @@ def calculate_demographic_data(print_data=True):
     higher_education_rich = len(higher_education[higher_education['salary'] == '>50K']) / len(higher_education) * 100
     lower_education_rich = len(lower_education[lower_education['salary'] == '>50K']) / len(lower_education) * 100
     
+    # Cual es el minimo de horas que una persona trabaja por semana?
+    min_work_hours = df['hours-per-week'].min()
+
     # print(race_count)
     # print(average_age_men)
     # print(percentage_bachelors)
-    print(higher_education_rich)
-    print(lower_education_rich)
+    # print(higher_education_rich)
+    # print(lower_education_rich)
+    print(min_work_hours)
 
 
 calculate_demographic_data()
