@@ -17,9 +17,23 @@ def calculate_demographic_data(print_data=True):
 
     # ¿Cual es el porcentaje de gente con un grado de Bachillerato?
     percentage_bachelors = (df['education'].value_counts()['Bachelors'] / df['education'].value_counts().sum()) * 100
+
+    # Cual es el porcentaje de gente con educación avanzada (`Bachelors`, `Masters`, or `Doctorate`) y ganan más de 50K?
+    # Cual es el porcentaje de gente sin educación avanzada que gana más de 50K?
+
+    # Con y sin `Bachelors`, `Masters`, or `Doctorate`
+    higher_education = df.loc[(df['education']=='Bachelors') | (df['education']=='Masters') | (df['education']=='Doctorate')]
+    lower_education =df.loc[(df['education']!='Bachelors') & (df['education']!='Masters') & (df['education']!='Doctorate')]
+
+    # Porcentaje con salario >50K
+    higher_education_rich = len(higher_education[higher_education['salary'] == '>50K']) / len(higher_education) * 100
+    lower_education_rich = len(lower_education[lower_education['salary'] == '>50K']) / len(lower_education) * 100
     
-    print(race_count)
-    print(average_age_men)
-    print(percentage_bachelors)
+    # print(race_count)
+    # print(average_age_men)
+    # print(percentage_bachelors)
+    print(higher_education_rich)
+    print(lower_education_rich)
+
 
 calculate_demographic_data()
