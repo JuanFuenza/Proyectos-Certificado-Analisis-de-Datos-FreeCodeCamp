@@ -5,7 +5,7 @@ pd.set_option('display.width', 1000)
 
 def calculate_demographic_data(print_data=True):
     # Leer data de un archivo
-    df = pd.read_csv('F:\Python\Proyecto-Certificado-AdDFCC\Proyectos-Certificado-Analisis-de-Datos-FreeCodeCamp\Analizador_de_datos_demograficos\\adult_data.csv')
+    # df = pd.read_csv('#Path-to-file')
     print(df.head(5))
 
     # Cuantas razas estan representadas en el dataset? Esto deberia ser una serie de Pandas con los nombres de las razas como indices.
