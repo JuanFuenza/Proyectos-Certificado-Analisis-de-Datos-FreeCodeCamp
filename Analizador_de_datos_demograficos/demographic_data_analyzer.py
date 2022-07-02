@@ -44,6 +44,12 @@ def calculate_demographic_data(print_data=True):
     highest_earning_country = set_name['native-country'][set_name[(set_name['salary'] == '>50K')]['count'].idxmax()]
     highest_earning_country_percentage = set_name[(set_name['salary'] == '>50K')]['count'].max()
 
+    # Identificar la ocupación más popular para aquellos que ganan >50K en India.
+    index_t_in_o = df.groupby(['native-country', 'occupation'])['salary'].value_counts()
+    search_india = index_t_in_o['India']
+    filter_salary = search_india[search_india.index.get_level_values('salary').isin(['>50K'])]
+    top_IN_occupation = filter_salary.idxmax()[0]
+
     # print(race_count)
     # print(average_age_men)
     # print(percentage_bachelors)
@@ -51,5 +57,6 @@ def calculate_demographic_data(print_data=True):
     # print(lower_education_rich)
     # print(min_work_hours)
     # print(highest_earning_country_percentage)
+    # print(top_IN_occupation)
 
 calculate_demographic_data()
