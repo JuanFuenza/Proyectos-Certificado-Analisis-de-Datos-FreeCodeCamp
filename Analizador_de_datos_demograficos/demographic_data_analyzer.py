@@ -37,12 +37,19 @@ def calculate_demographic_data(print_data=True):
 
     rich_percentage = len(num_min_workers.loc[num_min_workers['salary'] == '>50K']) / len(num_min_workers) * 100
 
+    # Cual es el pais con el mayor porcentaje de gente que gana >50K?
+    indexing = df.groupby('native-country')['salary'].value_counts() # Separación de paises con sus respectivos valores `>50K` y `<=50K`
+    calc_percentage = indexing.div(indexing.groupby(level=[0]).transform('sum') / 100) # Calculo porcentaje de los valores `>50K` y `<=50K`
+    set_name = calc_percentage.reset_index(name='count') # Convirtiendo el multiindex a index
+    highest_earning_country = set_name['native-country'][set_name[(set_name['salary'] == '>50K')]['count'].idxmax()]
+    highest_earning_country_percentage = set_name[(set_name['salary'] == '>50K')]['count'].max()
+
     # print(race_count)
     # print(average_age_men)
     # print(percentage_bachelors)
     # print(higher_education_rich)
     # print(lower_education_rich)
     # print(min_work_hours)
-    print(rich_percentage)
+    # print(highest_earning_country_percentage)
 
 calculate_demographic_data()
